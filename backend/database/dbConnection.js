@@ -1,18 +1,14 @@
 import mongoose from "mongoose";
 
-const dbConnection = () => {
-  mongoose.connect(process.env.MONGO_URL, {
-    dbName: 'JOB_SEEKER',
-   // useNewUrlParser: true,
-   // useUnifiedTopology: true,
-    //useCreateIndex: true
-  })
-  .then(() => {
-    console.log(`Connected to database`);
-  })
-  .catch((err) => {
-    console.log(`Some error occurred while connecting to database: ${err}`);
-  });
+export const dbConnection = () => {
+  mongoose
+    .connect(process.env.MONGO_URL, {
+      dbName: "MERN_JOB_SEEKING_WEBAPP",
+    })
+    .then(() => {
+      console.log("Connected to database.");
+    })
+    .catch((err) => {
+      console.log(`Some Error occured. ${err}`);
+    });
 };
-
-export default dbConnection;

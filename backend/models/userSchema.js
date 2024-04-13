@@ -56,4 +56,4 @@ userSchema.methods.getJWTToken = function () {
   });
 };
 
-export default mongoose.model('User', userSchema);
+export const User = mongoose.model('User', userSchema);
