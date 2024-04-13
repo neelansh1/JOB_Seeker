@@ -4,6 +4,8 @@ import {User} from '../models/userSchema.js'
 
 
 export const register = catchAsyncError(async (req,res,next) =>{
+  
+
   const {name,email,phone,role,password} = req.body;
   if(!name || !email || !phone || !role || !password){
     return next(new ErrorHandler("Please dill full registration form!"));
@@ -20,9 +22,12 @@ export const register = catchAsyncError(async (req,res,next) =>{
     role,
     password,
   });
+
+  
+
   res.status(200).json({
     success:true,
     message:"user Registered",
-    User,
+    user,
   });
 });

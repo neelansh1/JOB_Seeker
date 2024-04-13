@@ -12,7 +12,6 @@ import {errorMiddleware} from './middlewares/error.js'
 const app = express();
 dotenv.config({path: "./config/config.env"})
 
-
 // to connect backend to frontend
 app.use(cors({
   origin: [process.env.FRONTEND_URL],
@@ -36,7 +35,6 @@ app.use('/api/v1/application', applicationRouter);
 app.use('/api/v1/job', jobRouter);
 
 dbConnection();
-
 
 app.use(errorMiddleware);
 
