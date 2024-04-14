@@ -61,4 +61,3 @@ export const logout = catchAsyncError(async ( req, res, next) =>{
     });
 });
 
-
