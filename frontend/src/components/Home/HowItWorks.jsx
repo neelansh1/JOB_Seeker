@@ -1,4 +1,3 @@
-import React from "react";
 import { FaUserPlus } from "react-icons/fa";
 import { MdFindInPage } from "react-icons/md";
 import { IoMdSend } from "react-icons/io";
@@ -8,7 +7,7 @@ const HowItWorks = () => {
     <>
       <div className="howitworks">
         <div className="container">
-          <h3>How JobZee Works</h3>
+          <h3>How Job_Seeker Works</h3>
           <div className="banner">
             <div className="card">
               <FaUserPlus />
