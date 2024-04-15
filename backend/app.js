@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv'
-import cors from 'cors';
+import cors from 'cors'
 import cookieParser from 'cookie-parser';
 import fileUpload from 'express-fileupload';
 import userRouter from './routes/userRouter.js'
@@ -13,6 +13,7 @@ const app = express();
 dotenv.config({path: "./config/config.env"})
 
 // to connect backend to frontend
+
 app.use(cors({
   origin: [process.env.FRONTEND_URL],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],

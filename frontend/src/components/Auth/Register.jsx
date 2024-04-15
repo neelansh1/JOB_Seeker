@@ -16,7 +16,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
 
-  const { isAuthorized, setIsAuthorized, } = useContext(Context);
+  const { isAuthorized, setIsAuthorized, user, setUser } = useContext(Context);
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -38,15 +38,15 @@ const Register = () => {
       setPhone("");
       setRole("");
       setIsAuthorized(true);
+      setUser(data.user); // Assuming the backend returns user data upon registration
     } catch (error) {
       toast.error(error.response.data.message);
     }
   };
 
-  if(isAuthorized){
-    return <Navigate to={'/'}/>
+  if (isAuthorized) {
+    return <Navigate to={"/"} />;
   }
-
 
   return (
     <>
@@ -116,16 +116,9 @@ const Register = () => {
                 <RiLock2Fill />
               </div>
             </div>
-            <button type="submit" onClick={(e) => { handleRegister(); alert('Hello from frontend side'); }}>
+            <button type="submit" onClick={handleRegister}>
               Register
             </button>
-
-            {/* <button type="submit" onClick={(e) => { handleRegister(); alert('Hello from frontend side'); }}>
-  Register
-</button> */}
-
-
-
             <Link to={"/login"}>Login Now</Link>
           </form>
         </div>
