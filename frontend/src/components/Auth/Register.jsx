@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import  { useContext, useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLock2Fill } from "react-icons/ri";
@@ -16,7 +16,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
 
-  const { isAuthorized, setIsAuthorized, user, setUser } = useContext(Context);
+  const { isAuthorized, setIsAuthorized, } = useContext(Context);
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -116,9 +116,16 @@ const Register = () => {
                 <RiLock2Fill />
               </div>
             </div>
-            <button type="submit" onClick={handleRegister}>
+            <button type="submit" onClick={(e) => { handleRegister(); alert('Hello from frontend side'); }}>
               Register
             </button>
+
+            {/* <button type="submit" onClick={(e) => { handleRegister(); alert('Hello from frontend side'); }}>
+  Register
+</button> */}
+
+
+
             <Link to={"/login"}>Login Now</Link>
           </form>
         </div>
