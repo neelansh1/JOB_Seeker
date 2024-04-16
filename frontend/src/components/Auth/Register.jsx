@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import  { useContext, useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLock2Fill } from "react-icons/ri";
@@ -38,15 +38,15 @@ const Register = () => {
       setPhone("");
       setRole("");
       setIsAuthorized(true);
+      setUser(data.user); // Assuming the backend returns user data upon registration
     } catch (error) {
       toast.error(error.response.data.message);
     }
   };
 
-  if(isAuthorized){
-    return <Navigate to={'/'}/>
+  if (isAuthorized) {
+    return <Navigate to={"/"} />;
   }
-
 
   return (
     <>
