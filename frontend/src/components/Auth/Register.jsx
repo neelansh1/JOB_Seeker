@@ -1,4 +1,4 @@
-import  { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLock2Fill } from "react-icons/ri";
@@ -38,22 +38,22 @@ const Register = () => {
       setPhone("");
       setRole("");
       setIsAuthorized(true);
-      setUser(data.user); // Assuming the backend returns user data upon registration
     } catch (error) {
       toast.error(error.response.data.message);
     }
   };
 
-  if (isAuthorized) {
-    return <Navigate to={"/"} />;
+  if(isAuthorized){
+    return <Navigate to={'/'}/>
   }
+
 
   return (
     <>
       <section className="authPage">
         <div className="container">
           <div className="header">
-            <img src="/abcd.jpg" alt="logo" />
+            <img src="/JobZeelogo.png" alt="logo" />
             <h3>Create a new account</h3>
           </div>
           <form>
@@ -73,7 +73,7 @@ const Register = () => {
               <div>
                 <input
                   type="text"
-                  placeholder="Enter your name"
+                  placeholder="Zeeshan"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
@@ -85,7 +85,7 @@ const Register = () => {
               <div>
                 <input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder="zk@gmail.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -97,7 +97,7 @@ const Register = () => {
               <div>
                 <input
                   type="number"
-                  placeholder="Enter your mobile number"
+                  placeholder="12345678"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                 />
