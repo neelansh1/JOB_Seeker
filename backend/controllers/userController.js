@@ -31,6 +31,7 @@ export const register = catchAsyncError(async (req, res, next) => {
 
 //login func
 export const login = catchAsyncError(async (req, res, next) => {
+  console.log(req.body);
   const { email, password, role } = req.body;
   //checking all fields are filled
   if (!email || !password || !role) {
@@ -54,6 +55,7 @@ export const login = catchAsyncError(async (req, res, next) => {
     return next(new ErrorHandler("User with this role  does not exist", 400));
   }
   //sending llogin token
+  console.log(user);
   sendToken(user, 200, res, "User Login Successfull")
 
 });
@@ -73,3 +75,12 @@ export const logout = catchAsyncError(async ( req, res, next) =>{
     });
 });
 
+
+export const getUser = catchAsyncError((req,res,next) =>{
+  const user = req.user;
+  console.log(req.user)
+  res.status(200).json({
+    success:true,
+    user,
+  });
+});

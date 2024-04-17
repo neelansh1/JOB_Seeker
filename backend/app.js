@@ -15,11 +15,9 @@ dotenv.config({path: "./config/config.env"})
 // to connect backend to frontend
 
 app.use(cors({
-  origin: [process.env.FRONTEND_URL],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials:true,
-})
-);
+  origin: "http://localhost:5173",
+  credentials:true
+}))
 
 
 app.use(cookieParser());

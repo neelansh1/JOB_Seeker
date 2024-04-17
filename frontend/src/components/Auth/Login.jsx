@@ -3,8 +3,6 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLock2Fill } from "react-icons/ri";
 import { Link, Navigate } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
-import axios from "axios";
-import toast from "react-hot-toast";
 import { Context } from "../../main";
 
 const Login = () => {
@@ -17,23 +15,28 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(
-        "http://localhost:4000/api/v1/user/login",
-        { email, password, role },
+      console.log("HI");
+      const response = await fetch(
+
+        "http://localhost:4000/api/api/v1/user/login",
         {
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          withCredentials: true,
+          body: JSON.stringify({
+            email: email,
+            password: password,
+            role: role
+          }),
         }
       );
-      toast.success(data.message);
-      setEmail("");
-      setPassword("");
-      setRole("");
+      console.log(response)
+  
       setIsAuthorized(true);
     } catch (error) {
-      toast.error(error.response.data.message);
+      console.log(error)
+      // toast.error(error.response.data.message);
     }
   };
 
