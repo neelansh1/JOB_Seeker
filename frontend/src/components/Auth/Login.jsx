@@ -1,8 +1,10 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLock2Fill } from "react-icons/ri";
 import { Link, Navigate } from "react-router-dom";
 import { FaRegUser } from "react-icons/fa";
+import axios from "axios";
+import toast from "react-hot-toast";
 import { Context } from "../../main";
 
 const Login = () => {
@@ -15,28 +17,23 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      console.log("HI");
-      const response = await fetch(
-
-        "http://localhost:4000/api/api/v1/user/login",
+      const { data } = await axios.post(
+        "http://localhost:4000/api/v1/user/login",
+        { email, password, role },
         {
-          method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            email: email,
-            password: password,
-            role: role
-          }),
+          withCredentials: true,
         }
       );
-      console.log(response)
-  
+      toast.success(data.message);
+      setEmail("");
+      setPassword("");
+      setRole("");
       setIsAuthorized(true);
     } catch (error) {
-      console.log(error)
-      // toast.error(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -49,7 +46,7 @@ const Login = () => {
       <section className="authPage">
         <div className="container">
           <div className="header">
-            <img src="/abcd.jpg" alt="logo" />
+            <img src="/JobZeelogo.png" alt="logo" />
             <h3>Login to your account</h3>
           </div>
           <form>
@@ -69,7 +66,7 @@ const Login = () => {
               <div>
                 <input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder="zk@gmail.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
